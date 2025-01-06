@@ -8,7 +8,11 @@ typedef struct Node
 
 void insert_beginning(Node *&head, int value)
 {
+	Node *temp = new Node;
+	temp->data = value;
+	temp->next = head;
 
+	head = temp;
 }
 
 void insert_end(Node *&head, int value)
