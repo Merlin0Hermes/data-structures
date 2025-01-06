@@ -6,6 +6,7 @@ typedef struct Node
 	Node *next;
 };
 
+
 void insert_end(Node*& head, int value)
 {
 	Node *new_node = new Node;
@@ -42,6 +43,20 @@ void delete_list(Node*& head)
 	head = nullptr;
 }
 
+
+void print_list(Node *head)
+{
+	Node *temp = head;
+
+	while (temp != nullptr)
+	{
+		std::cout << temp->data << " ";
+		temp = temp->next;
+	}
+	std::cout << std::endl;
+}
+
+
 int main()
 {
 	Node *list = nullptr;
@@ -51,6 +66,7 @@ int main()
 		std::cout << temp->data << " ";
 	}
 
+	delete_list(list);
 	return 0;
 }
 
