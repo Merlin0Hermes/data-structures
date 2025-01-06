@@ -1,2 +1,7 @@
 BasedOnStyle: LLVM
-PointerAlignment: Right
+IndentWidth: 4        
+UseTab: Always           
+PointerAlignment: Right  
+TabWidth: 4            
+BreakBeforeBraces: Attach
+AllowShortFunctionsOnASingleLine: Inline
