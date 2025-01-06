@@ -6,8 +6,12 @@ typedef struct Node
 	Node *next;
 };
 
+void insert_beginning(Node *&head, int value)
+{
 
-void insert_end(Node*& head, int value)
+}
+
+void insert_end(Node *&head, int value)
 {
 	Node *new_node = new Node;
 	new_node->next = nullptr;
@@ -28,7 +32,7 @@ void insert_end(Node*& head, int value)
 }
 
 
-void delete_list(Node*& head)
+void delete_list(Node *&head)
 {
 	Node *cur = head;
 	Node *prev = nullptr;
