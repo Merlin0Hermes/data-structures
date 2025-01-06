@@ -6,6 +6,7 @@ typedef struct Node
 	Node *next;
 };
 
+
 void insert_beginning(Node *&head, int value)
 {
 	Node *temp = new Node;
@@ -15,12 +16,15 @@ void insert_beginning(Node *&head, int value)
 	head = temp;
 }
 
+
 void insert_end(Node *&head, int value)
 {
+	// create a new node and set its data and next fields
 	Node *new_node = new Node;
 	new_node->next = nullptr;
 	new_node->data = value;
 
+	// special case if list is empty
 	if (head == nullptr)
 	{
 		head = new_node;
