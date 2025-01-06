@@ -72,7 +72,7 @@ int main()
 	int val;
 	while (true) 
 	{
-		std::cout << "Enter the operation: ";
+		std::cout << "\nEnter the operation: ";
 		std::cin >> option;
 		switch (option)
 		{
