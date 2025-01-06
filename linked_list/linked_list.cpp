@@ -77,8 +77,8 @@ int main()
 		switch (option)
 		{
 			case 0:
-				exit(0);
-				break;
+				delete_list(list);
+				return 0;		
 			case 1:
 				std::cout << "Enter an element: "; 
 				std::cin >> val;
