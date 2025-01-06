@@ -26,9 +26,31 @@ void insert_end(Node*& head, int value)
 	temp->next = new_node;
 }
 
+
+void delete_list(Node*& head)
+{
+	Node *cur = head;
+	Node *prev = nullptr;
+	
+	while (cur != nullptr) 
+	{
+		prev = cur;
+		cur = cur->next;
+		delete prev;
+	}
+
+	head = nullptr;
+}
+
 int main()
 {
-	Node *head = NULL;
+	Node *list = nullptr;
+
+	for (Node *temp = list; temp != nullptr; temp = temp->next)
+	{
+		std::cout << temp->data << " ";
+	}
 
 	return 0;
 }
+
