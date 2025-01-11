@@ -7,11 +7,11 @@ typedef struct Node
 };
 
 
-Node* create_node(int value)
+Node* create_node(int value, Node *ptr)
 {
 	Node *new_node = new Node;
-	new_node->next = nullptr;
 	new_node->data = value;
+	new_node->next = ptr;
 	return new_node;
 }
 
