@@ -7,6 +7,15 @@ typedef struct Node
 };
 
 
+Node* create_node(int value)
+{
+	Node *new_node = new Node;
+	new_node->next = nullptr;
+	new_node->data = value;
+	return new_node;
+}
+
+
 void insert_beginning(Node *&head, int value)
 {
 	Node *temp = new Node;
