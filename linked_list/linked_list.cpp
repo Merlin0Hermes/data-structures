@@ -18,19 +18,15 @@ Node* create_node(int value, Node *ptr)
 
 void insert_beginning(Node *&head, int value)
 {
-	Node *temp = new Node;
-	temp->data = value;
-	temp->next = head;
+	Node *temp = create_node(value, head);
 
 	head = temp;
 }
 
 
 void insert(Node*& head, int pos, int value)
-{
-	Node *new_node = new Node;
-	new_node->next = nullptr;
-	new_node->data = value;
+{	
+	Node *new_node = create_node(value, nullptr);
 
 	Node *temp = head;
 	for (int i = 1; i < pos - 1; i++)
@@ -45,9 +41,7 @@ void insert(Node*& head, int pos, int value)
 void insert_end(Node *&head, int value)
 {
 	// create a new node and set its data and next fields
-	Node *new_node = new Node;
-	new_node->next = nullptr;
-	new_node->data = value;
+	Node *new_node = create_node(value, nullptr);
 
 	// special case if list is empty
 	if (head == nullptr)
