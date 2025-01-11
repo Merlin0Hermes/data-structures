@@ -26,11 +26,25 @@ void insert_beginning(Node *&head, int value)
 
 void insert(Node*& head, int pos, int value)
 {	
+	
+	if (head == nullptr || pos == 1)
+	{
+		insert_beginning(head, value);
+		return;
+	}
+
 	Node *new_node = create_node(value, nullptr);
 
 	Node *temp = head;
-	for (int i = 1; i < pos - 1; i++)
+	for (int i = 1; temp != nullptr && i < pos - 1; i++)
 		temp = temp->next;
+
+	if (temp == nullptr)
+	{
+		std::cerr << "Invalid index.\n";
+		delete new_node;
+		return;
+	}
 
 	new_node->next = temp->next;
 	temp->next = new_node;
@@ -94,10 +108,7 @@ int main()
 	
 	int option{};
 
-	insert_end(list, 5);
-	insert_end(list, 5);
-	insert_end(list, 5);
-	insert(list, 2, 1);
+
 
 	std::cout << "Operations\n\n";
 	std::cout << "0: exit.\n";
@@ -105,7 +116,7 @@ int main()
 	std::cout << "2: Print the list.\n";
 	std::cout << "3: Delete the list.\n\n";
 	
-	int val;
+	int pos, val;
 	while (true) 
 	{
 		std::cout << "\nEnter the operation: ";
@@ -116,9 +127,9 @@ int main()
 				delete_list(list);
 				return 0;		
 			case 1:
-				std::cout << "Enter an element: "; 
-				std::cin >> val;
-				insert_end(list, val);
+				std::cout << "Enter the position and value of element: "; 
+				std::cin >> pos >> val;
+				insert(list, pos, val);
 				break;
 			case 2: 
 				print_list(list); 
