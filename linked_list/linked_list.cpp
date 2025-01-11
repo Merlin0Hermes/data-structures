@@ -17,6 +17,22 @@ void insert_beginning(Node *&head, int value)
 }
 
 
+void insert(Node*& head, int pos, int value)
+{
+	Node *new_node = new Node;
+	new_node->next = nullptr;
+	new_node->data = value;
+
+	Node *temp = head;
+	for (int i = 1; i < pos - 1; i++)
+		temp = temp->next;
+
+	new_node->next = temp->next;
+	temp->next = new_node;
+
+}
+
+
 void insert_end(Node *&head, int value)
 {
 	// create a new node and set its data and next fields
@@ -74,6 +90,11 @@ int main()
 	Node *list = nullptr;
 	
 	int option{};
+
+	insert_end(list, 5);
+	insert_end(list, 5);
+	insert_end(list, 5);
+	insert(list, 2, 1);
 
 	std::cout << "Operations\n\n";
 	std::cout << "0: exit.\n";
