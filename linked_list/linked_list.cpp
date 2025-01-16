@@ -4,7 +4,7 @@ typedef struct Node
 {
 	int data;
 	Node *next;
-};
+} Node;
 
 
 Node* create_node(int value, Node *ptr)
