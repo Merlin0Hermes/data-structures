@@ -7,9 +7,9 @@ int main()
 
     constexpr int len {static_cast<int>(std::size(array))};
 
-    bool swapped {false};
     for (int i {0}; i < len - 1; ++i)
     {
+        bool swapped {false};
         for (int j {0}; j < len - i - 1; ++j)
         {
             if (array[j] > array[j + 1])
@@ -19,7 +19,10 @@ int main()
             }
         }
         if (!swapped)
+        {
+            std::cout << "Early termination on iteration " << i + 1 << "\n";
             break;
+        }
     }
 
     std::cout << "Sorted array: ";
