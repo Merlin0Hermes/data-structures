@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iterator>
+#include <numeric>
 
 // array is the array to search over.
 // target is the value we're trying to determine exists or not.
@@ -8,7 +9,19 @@
 // binarySearch() should return the index of the target element if the target is found, -1 otherwise
 int binarySearch(const int* array, int target, int min, int max)
 {
+    int index {};
+    while (min <= max)
+    {
+        index = std::midpoint(min, max);
+        if (array[index] == target)
+            return index;
 
+        if (array[index] > target)
+            max = index - 1;
+        else if (array[index] < target)
+            min = index + 1;
+    }
+    return -1;
 }
 
 int main()
