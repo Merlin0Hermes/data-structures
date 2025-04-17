@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 #include <iterator>
 #include <numeric>
@@ -9,19 +10,19 @@
 // binarySearch() should return the index of the target element if the target is found, -1 otherwise
 int binarySearch(const int* array, int target, int min, int max)
 {
-    int index {};
-    while (min <= max)
-    {
-        index = std::midpoint(min, max);
-        if (array[index] == target)
-            return index;
+    assert(array && "Array doesn't exist");
+    
+    if (min > max)
+        return -1;
 
-        if (array[index] > target)
-            max = index - 1;
-        else if (array[index] < target)
-            min = index + 1;
-    }
-    return -1;
+    int index { std::midpoint(min, max) };
+    if (array[index] == target)
+        return index;
+    
+    if (array[index] < target)
+        return binarySearch(array, target, index + 1, max);
+    else if (array[index] > target)
+        return binarySearch(array,target, min, index - 1);
 }
 
 int main()
