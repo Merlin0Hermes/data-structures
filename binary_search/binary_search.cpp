@@ -23,6 +23,8 @@ int binary_search(const int* array, int target, int min, int max)
         return binary_search(array, target, index + 1, max);
     else if (array[index] > target)
         return binary_search(array,target, min, index - 1);
+    
+    return -1;
 }
 
 int main()
