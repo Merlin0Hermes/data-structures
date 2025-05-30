@@ -1,110 +1,91 @@
 #include <iostream>
 
-typedef struct Node
+template <typename T>
+struct Node
 {
-	int data;
-	Node *next;
-} Node;
+	T data;
+	Node<T> *next;
+};
 
 
-Node* create_node(int value, Node *ptr)
+template <typename T>
+class LinkedList
 {
-	Node *new_node = new Node;
+public:
+	LinkedList()
+	{
+	}
+
+	~LinkedList()
+	{
+		Node<T>* cur{head};
+		Node<T>* prev{nullptr};
+
+		while (cur != nullptr)
+		{
+			prev = cur;
+			cur = cur->next;
+			delete prev;
+		}
+		head = nullptr;
+	}
+	void insert(T value);
+	void print();
+
+private:
+	Node<T>* head{nullptr};
+
+	Node<T>* create_node(T value, Node<T>* ptr);
+
+};
+
+template <typename T>
+Node<T>* LinkedList<T>::create_node(T value, Node<T>* ptr)
+{
+	Node<T>* new_node = new Node<T>;
 	new_node->data = value;
 	new_node->next = ptr;
 	return new_node;
 }
 
 
-void insert_beginning(Node *&head, int value)
+template <typename T>
+void LinkedList<T>::insert(T value)
 {
-	Node *temp = create_node(value, head);
+	Node<T>* new_node = create_node(value, nullptr);
 
-	head = temp;
-}
-
-
-void insert(Node*& head, int pos, int value)
-{	
-	
-	if (head == nullptr || pos == 1)
-	{
-		insert_beginning(head, value);
-		return;
-	}
-
-	Node *new_node = create_node(value, nullptr);
-
-	Node *temp = head;
-	for (int i = 1; temp != nullptr && i < pos - 1; i++)
-		temp = temp->next;
-
-	if (temp == nullptr)
-	{
-		std::cerr << "Invalid index.\n";
-		delete new_node;
-		return;
-	}
-
-	new_node->next = temp->next;
-	temp->next = new_node;
-
-}
-
-
-void insert_end(Node *&head, int value)
-{
-	// create a new node and set its data and next fields
-	Node *new_node = create_node(value, nullptr);
-
-	// special case if list is empty
 	if (head == nullptr)
 	{
 		head = new_node;
 		return;
 	}
 
-	Node *temp = head;
-	while (temp->next != NULL)
-	{
+	Node<T>* temp{head};
+
+	while (temp->next != nullptr)
 		temp = temp->next;
-	}
+
 	temp->next = new_node;
+
 }
 
 
-void delete_list(Node *&head)
+template <typename T>
+void LinkedList<T>::print()
 {
-	Node *cur = head;
-	Node *prev = nullptr;
-	
-	while (cur != nullptr) 
-	{
-		prev = cur;
-		cur = cur->next;
-		delete prev;
-	}
-
-	head = nullptr;
-}
-
-
-void print_list(Node *head)
-{
-	Node *temp = head;
+	Node<T>* temp{head};
 
 	while (temp != nullptr)
 	{
 		std::cout << temp->data << " ";
 		temp = temp->next;
 	}
-	std::cout << std::endl;
 }
 
 
 int main()
 {
-	Node *list = nullptr;
+	LinkedList<int> list{};
 	
 	int option{};
 
@@ -124,26 +105,24 @@ int main()
 		switch (option)
 		{
 			case 0:
-				delete_list(list);
 				return 0;		
 			case 1:
-				std::cout << "Enter the position and value of element: "; 
-				std::cin >> pos >> val;
-				insert(list, pos, val);
+				std::cout << "Enter the value of element: "; 
+				std::cin >> val;
+				list.insert(val);
 				break;
 			case 2: 
-				print_list(list); 
+				list.print();
+				std::cout << "\n";
 				break;
 			case 3: 
-				delete_list(list); 
+				// delete_list(list); 
 				break;
 			default: 
 				std::cerr << "Error: Invalid operation.\n";
 		}
 	
 	}
-
-	delete_list(list);
 	return 0;
 }
 
