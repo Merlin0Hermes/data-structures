@@ -7,8 +7,8 @@
 // target is the value we're trying to determine exists or not.
 // min is the index of the lower bounds of the array we're searching.
 // max is the index of the upper bounds of the array we're searching.
-// binarySearch() should return the index of the target element if the target is found, -1 otherwise
-int binarySearch(const int* array, int target, int min, int max)
+// binary_search() should return the index of the target element if the target is found, -1 otherwise
+int binary_search(const int* array, int target, int min, int max)
 {
     assert(array && "Array doesn't exist");
     
@@ -20,9 +20,9 @@ int binarySearch(const int* array, int target, int min, int max)
         return index;
     
     if (array[index] < target)
-        return binarySearch(array, target, index + 1, max);
+        return binary_search(array, target, index + 1, max);
     else if (array[index] > target)
-        return binarySearch(array,target, min, index - 1);
+        return binary_search(array,target, min, index - 1);
 }
 
 int main()
@@ -45,11 +45,11 @@ int main()
     for (int count{ 0 }; count < numTestValues; ++count)
     {
         // See if our test value is in the array
-        int index{ binarySearch(array, testValues[count], 0, static_cast<int>(std::size(array)) - 1) };
+        int index{ binary_search(array, testValues[count], 0, static_cast<int>(std::size(array)) - 1) };
         // If it matches our expected value, then great!
         if (index == expectedResult[count])
              std::cout << "test value " << testValues[count] << " passed!\n";
-        else // otherwise, our binarySearch() function must be broken
+        else // otherwise, our binary_search() function must be broken
              std::cout << "test value " << testValues[count] << " failed.  There's something wrong with your code!\n";
     }
 
