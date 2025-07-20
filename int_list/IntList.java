@@ -15,8 +15,8 @@ public class IntList {
     }
 
     public int iterativeSize() {
-        IntList list = rest;
-        int size = 1;
+        IntList list = this;
+        int size = 0;
         while (list != null) {
             ++size;
             list = list.rest;
