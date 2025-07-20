@@ -31,10 +31,19 @@ public class IntList {
         return rest.get(i - 1);
     }
 
+    public int iterativeGet(int i) {
+        IntList list = this;
+        while (i != 0) {
+            --i;
+            list = list.rest;
+        }
+        return list.first;
+    }
+
     public static void main(String[] args) {
         IntList list = new IntList(5, null);
         list = new IntList(10, list);
         list = new IntList(15, list);
-        System.out.println(list.get(1));
+        System.out.println(list.iterativeGet(0));
     }
 }
