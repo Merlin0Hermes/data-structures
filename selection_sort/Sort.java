@@ -9,9 +9,9 @@ public class Sort {
         }
     }
 
-    private static int findSmallest(int[] arr) {
+    private static int findSmallest(int[] arr, int start) {
         int smallestIndex = 0;
-        for (int i = 0; i < arr.length; ++i) {
+        for (int i = start; i < arr.length; ++i) {
             if (arr[i] < arr[smallestIndex]) {
                 smallestIndex = i;
             }
