@@ -1,8 +1,25 @@
+
+
 public class Sort {
 
-    public static void sort(int[] array) {
+    public static void sort(int[] arr) {
         
+        for (int i = 0; i < arr.length; ++i) {
+
+        }
     }
+
+    private static int findSmallest(int[] arr) {
+        int smallestIndex = 0;
+        for (int i = 0; i < arr.length; ++i) {
+            if (arr[i] < arr[smallestIndex]) {
+                smallestIndex = i;
+            }
+        }
+        return smallestIndex;
+    }
+
+
 
     public static void main(String[] args) {
         
