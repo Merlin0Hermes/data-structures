@@ -14,10 +14,20 @@ public class IntList {
         return 1 + rest.size();
     }
 
+    public int iterativeSize() {
+        IntList list = rest;
+        int size = 1;
+        while (list != null) {
+            ++size;
+            list = list.rest;
+        }
+        return size;
+    }
+
     public static void main(String[] args) {
         IntList list = new IntList(5, null);
         list = new IntList(10, list);
         list = new IntList(15, list);
-        System.out.println(list.size());
+        System.out.println(list.iterativeSize());
     }
 }
