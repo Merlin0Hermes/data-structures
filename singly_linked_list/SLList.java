@@ -11,9 +11,11 @@ public class SLList {
     }
 
     private IntNode first;
+    private int size;
 
     public SLList(int item) {
         first = new IntNode(item, null);
+        size = 1;
     }
 
     public int getFirst() {
@@ -22,6 +24,7 @@ public class SLList {
 
     public void addFirst(int item) {
         first = new IntNode(item, first);
+        ++size;
     }
 
     private static int size(IntNode node) {
@@ -41,6 +44,7 @@ public class SLList {
             p = p.next;
         }
         p.next = new IntNode(item, null);
+        ++size;
     }
 
     public static void main(String[] args) {
