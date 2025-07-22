@@ -44,6 +44,11 @@ public class SLList {
     }
 
     public void addLast(int item) {
+        if (first == null) {
+            addFirst(item);
+            return;
+        }
+
         IntNode p = first;
         while(p.next != null) {
             p = p.next;
@@ -55,7 +60,6 @@ public class SLList {
     public static void main(String[] args) {
         SLList list = new SLList();
 
-        list.addFirst(1);
         list.addLast(10);
         list.addLast(20);
         list.addFirst(5);
