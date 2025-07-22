@@ -11,6 +11,7 @@ public class SLList {
     }
 
     private IntNode first;
+    private int size = 0;
 
     public SLList(int item) {
         first = new IntNode(item, null);
@@ -22,12 +23,27 @@ public class SLList {
 
     public void addFirst(int item) {
         first = new IntNode(item, first);
+        ++size;
     }
 
+    public int size() {
+        return size;
+    }
+
+    public void addLast(int item) {
+        IntNode p = first;
+        while(p.next != null) {
+            p = p.next;
+        }
+        p.next = new IntNode(item, null);
+        ++size;
+    }
 
     public static void main(String[] args) {
         SLList list = new SLList(10);
-        list.addFirst(20);
-        System.out.println(list.first.item);
+        list.addLast(10);
+        list.addLast(20);
+        list.addFirst(5);
+
     }
 }
