@@ -23,6 +23,10 @@ public class SLList {
         size = 1;
     }
 
+    public boolean isEmpty() {
+        return first == null;
+    }
+
     public int getFirst() {
         return first.item;
     }
@@ -44,7 +48,7 @@ public class SLList {
     }
 
     public void addLast(int item) {
-        if (first == null) {
+        if (isEmpty()) {
             addFirst(item);
             return;
         }
