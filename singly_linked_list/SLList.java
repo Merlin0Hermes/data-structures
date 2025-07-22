@@ -10,50 +10,42 @@ public class SLList {
         }
     }
 
-    private IntNode first;
+    /** first item in list is at sentinel.next
+     * sentinel is never null. */
+    private IntNode sentinel;
     private int size;
 
     public SLList() {
-        first = null;
+        sentinel = new IntNode(0, null);
         size = 0;
     }
 
     public SLList(int item) {
-        first = new IntNode(item, null);
+        sentinel = new IntNode(0, null);
+        sentinel.next = new IntNode(item, null);
         size = 1;
     }
 
     public boolean isEmpty() {
-        return first == null;
+        return sentinel.next == null;
     }
 
     public int getFirst() {
-        return first.item;
+        return sentinel.next.item;
     }
 
     public void addFirst(int item) {
-        first = new IntNode(item, first);
+        sentinel.next = new IntNode(item, sentinel.next);
         ++size;
     }
 
-    private static int size(IntNode node) {
-        if (node.next == null) {
-            return 1;
-        }
-        return 1 + size(node.next);
-    }
-
     public int size() {
-        return size(first);
+        return size;
     }
 
     public void addLast(int item) {
-        if (isEmpty()) {
-            addFirst(item);
-            return;
-        }
 
-        IntNode p = first;
+        IntNode p = sentinel;
         while(p.next != null) {
             p = p.next;
         }
