@@ -40,10 +40,19 @@ public class IntList {
         return list.first;
     }
 
+    public void addFirst(int item) {
+        rest = new IntList(first, rest);
+        first = item;
+    }
+
+    public int getFirst() {
+        return get(0);
+    }
+
     public static void main(String[] args) {
         IntList list = new IntList(5, null);
-        list = new IntList(10, list);
-        list = new IntList(15, list);
-        System.out.println(list.iterativeGet(0));
+        list.addFirst(10);
+        list.addFirst(15);
+        System.out.println(list.getFirst());
     }
 }
