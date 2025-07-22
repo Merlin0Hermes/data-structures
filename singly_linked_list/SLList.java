@@ -24,14 +24,15 @@ public class SLList {
         first = new IntNode(item, first);
     }
 
-    public int size() {
-        IntNode p = first;
-        int size = 0;
-        while (p != null) {
-            ++size;
-            p = p.next;
+    private static int size(IntNode node) {
+        if (node.next == null) {
+            return 1;
         }
-        return size;
+        return 1 + size(node.next);
+    }
+
+    public int size() {
+        return size(first);
     }
 
     public void addLast(int item) {
