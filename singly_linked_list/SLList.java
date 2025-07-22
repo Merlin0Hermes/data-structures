@@ -13,6 +13,11 @@ public class SLList {
     private IntNode first;
     private int size;
 
+    public SLList() {
+        first = null;
+        size = 0;
+    }
+
     public SLList(int item) {
         first = new IntNode(item, null);
         size = 1;
@@ -48,7 +53,9 @@ public class SLList {
     }
 
     public static void main(String[] args) {
-        SLList list = new SLList(10);
+        SLList list = new SLList();
+
+        list.addFirst(1);
         list.addLast(10);
         list.addLast(20);
         list.addFirst(5);
