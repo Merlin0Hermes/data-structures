@@ -1,5 +1,5 @@
 public class SLList {
-    IntNode first;
+    private IntNode first;
 
     public SLList(int item) {
         first = new IntNode(item, null);
@@ -17,5 +17,6 @@ public class SLList {
     public static void main(String[] args) {
         SLList list = new SLList(10);
         list.addFirst(20);
+        System.out.println(list.first.item);
     }
 }
