@@ -1,3 +1,5 @@
+package selection_sort;
+
 import static org.junit.Assert.assertArrayEquals;
 
 

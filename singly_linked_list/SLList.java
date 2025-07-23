@@ -1,3 +1,5 @@
+package singly_linked_list;
+
 public class SLList {
 
     private static class IntNode {
