@@ -1,11 +1,13 @@
 package deque;
 
+import java.nio.file.attribute.UserPrincipalLookupService;
+
 public class LinkedListDeque<T> {
 
     private static class Node<T> {
         T item;
-        Node<T> next;
         Node<T> prev;
+        Node<T> next;
 
         public Node(T i, Node<T> p, Node<T> n) {
             item = i;
@@ -13,13 +15,12 @@ public class LinkedListDeque<T> {
             next = n;
         }
 
-        public Node(Node<T> n, Node<T> p) {
-            next = n;
+        public Node(Node<T> p, Node<T> n) {
             prev = p;
+            next = n;
         }
 
         public Node() {
-
         }
     }
 
@@ -37,16 +38,10 @@ public class LinkedListDeque<T> {
     public LinkedListDeque(T item) {
         size = 1;
         sentinel = new Node<T>();
-        Node<T> node = new Node<T>();
+        Node<T> node = new Node<T>(item, sentinel, sentinel);
 
         sentinel.next = node;
         sentinel.prev = node;
-
-        node.prev = sentinel;
-        node.next = sentinel;
-
-        node.item = item;
-        size = 0;
     }
 
     public boolean isEmpty() {
@@ -80,14 +75,20 @@ public class LinkedListDeque<T> {
         System.out.println();
     }
 
-
-    public static void main(String[] args) {
-        LinkedListDeque<Integer> list = new LinkedListDeque<>();
-        list.addLast(10);
-        list.addLast(20);
-        list.addFirst(30);
-
-        list.printDeque();
+    public T removeFirst() {
+        T item = sentinel.next.item;
+        sentinel.next = sentinel.next.next;
+        sentinel.next.prev = sentinel;
+        if (item != null) --size;
+        return item;
     }
 
+    public T removeLast() {
+        T item = sentinel.prev.item;
+        sentinel.prev = sentinel.prev.prev;
+        sentinel.prev.next = sentinel;
+
+        if (item != null) --size;
+        return item;
+    }
 }
