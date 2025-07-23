@@ -6,6 +6,21 @@ public class LinkedListDeque<T> {
         T item;
         Node<T> next;
         Node<T> prev;
+
+        public Node(T i, Node<T> p, Node<T> n) {
+            item = i;
+            prev = p;
+            next = n;
+        }
+
+        public Node(Node<T> n, Node<T> p) {
+            next = n;
+            prev = p;
+        }
+
+        public Node() {
+
+        }
     }
 
     /** first item in list is at sentinel.next (if it exists) */
@@ -17,7 +32,6 @@ public class LinkedListDeque<T> {
         sentinel = new Node<T>();
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
-
     }
 
     public LinkedListDeque(T item) {
@@ -34,8 +48,17 @@ public class LinkedListDeque<T> {
         node.item = item;
     }
 
+    public void addFirst(T item) {
+        Node<T> node = new Node<T>(item, sentinel, sentinel.next);
+        sentinel.next = node;
+        node.next.prev = node;
+    }
+
     public static void main(String[] args) {
-        LinkedListDeque<Integer> list = new LinkedListDeque<>(5);
+        LinkedListDeque<Integer> list = new LinkedListDeque<>();
+        list.addFirst(10);
+        list.addFirst(20);
+        list.addFirst(30);
 
     }
 
