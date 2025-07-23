@@ -89,4 +89,13 @@ public class LinkedListDeque<T> {
         if (item != null) --size;
         return item;
     }
+
+    public T get(int index) {
+        Node<T> p = sentinel.next;
+        while (index != 0 && p != sentinel) {
+            p = p.next;
+            --index;
+        }
+        return p.item;
+    }
 }
