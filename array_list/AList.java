@@ -5,11 +5,16 @@ public class AList {
     private int size;
 
     public AList() {
-        items = new int[100];
+        items = new int[1];
         size = 0;
     }
 
     public void addLast(int item) {
+        if (size == items.length) {
+            int[] arr = new int[size + 1];
+            System.arraycopy(items, 0, arr, 0, size);
+            items = arr;
+        }
         items[size++] = item;
     }
 
@@ -32,6 +37,9 @@ public class AList {
     }
 
     public static void main(String[] args) {
-
+        AList list = new AList();
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
     }
 }
