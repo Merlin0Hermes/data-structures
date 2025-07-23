@@ -13,6 +13,7 @@ x86/
 [Aa][Rr][Mm]/
 bin/
 obj/
+out/
 *.out
 *.class
 
