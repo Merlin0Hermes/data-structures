@@ -25,6 +25,12 @@ public class AList {
         return size;
     }
 
+    public int removeLast() {
+        int item = getLast();
+        --size;
+        return item;
+    }
+
     public static void main(String[] args) {
 
     }
