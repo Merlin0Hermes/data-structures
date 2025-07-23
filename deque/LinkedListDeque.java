@@ -53,6 +53,10 @@ public class LinkedListDeque<T> {
         return size == 0;
     }
 
+    public int size() {
+        return size;
+    }
+
     public void addFirst(T item) {
         Node<T> node = new Node<T>(item, sentinel, sentinel.next);
         sentinel.next = node;
