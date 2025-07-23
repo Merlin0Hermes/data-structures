@@ -1,7 +1,5 @@
 package deque;
 
-import java.nio.file.attribute.UserPrincipalLookupService;
-
 public class LinkedListDeque<T> {
 
     private static class Node<T> {
