@@ -23,8 +23,8 @@ public class LinkedListDeque<T> {
     }
 
     /** first item in list is at sentinel.next (if it exists) */
-    Node<T> sentinel;
-    int size;
+    private Node<T> sentinel;
+    private int size;
 
     public LinkedListDeque() {
         size = 0;
