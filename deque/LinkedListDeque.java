@@ -49,6 +49,10 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
     public void addFirst(T item) {
         Node<T> node = new Node<T>(item, sentinel, sentinel.next);
         sentinel.next = node;
@@ -68,7 +72,6 @@ public class LinkedListDeque<T> {
         list.addLast(10);
         list.addLast(20);
         list.addFirst(30);
-
     }
 
 }
