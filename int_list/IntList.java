@@ -1,8 +1,8 @@
 package int_list;
 
 public class IntList {
-    int first;
-    IntList rest;
+    private int first;
+    private IntList rest;
 
     public IntList(int f, IntList r) {
         first = f;

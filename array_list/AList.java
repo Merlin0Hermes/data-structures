@@ -1,8 +1,8 @@
 package array_list;
 
 public class AList {
-    int[] items;
-    int size;
+    private int[] items;
+    private int size;
 
     public AList() {
         items = new int[100];
