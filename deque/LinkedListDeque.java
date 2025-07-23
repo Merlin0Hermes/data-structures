@@ -71,11 +71,23 @@ public class LinkedListDeque<T> {
         ++size;
     }
 
+    public void printDeque() {
+        Node<T> p = sentinel.next;
+        while(p != sentinel) {
+            System.out.print(p.item + " ");
+            p = p.next;
+        }
+        System.out.println();
+    }
+
+
     public static void main(String[] args) {
         LinkedListDeque<Integer> list = new LinkedListDeque<>();
         list.addLast(10);
         list.addLast(20);
         list.addFirst(30);
+
+        list.printDeque();
     }
 
 }
