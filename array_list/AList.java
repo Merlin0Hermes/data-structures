@@ -37,6 +37,7 @@ public class AList<T> {
 
     public T removeLast() {
         T item = getLast();
+        items[size = 1] = null;
         --size;
         return item;
     }
