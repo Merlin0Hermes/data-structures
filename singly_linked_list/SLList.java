@@ -15,16 +15,20 @@ public class SLList {
     /** first item in list is at sentinel.next
      * sentinel is never null. */
     private IntNode sentinel;
+    private IntNode last;
     private int size;
+
 
     public SLList() {
         sentinel = new IntNode(0, null);
+        last = sentinel;
         size = 0;
     }
 
     public SLList(int item) {
         sentinel = new IntNode(0, null);
         sentinel.next = new IntNode(item, null);
+        last = sentinel;
         size = 1;
     }
 
@@ -45,7 +49,8 @@ public class SLList {
     }
 
     public void addLast(int item) {
-        insert(item, size);
+        last.next = new IntNode(item, null);
+        last = last.next;
     }
 
     /** inserts item at a position. inserts at end of list
@@ -61,6 +66,10 @@ public class SLList {
         }
         p.next = new IntNode(item, p.next);
         ++size;
+
+        if (p == last) {
+            last = p.next;
+        }
     }
 
     private IntNode reverse(IntNode node) {
@@ -76,6 +85,15 @@ public class SLList {
         reverse(sentinel.next).next = null;
     }
 
+    public void print() {
+        IntNode p = sentinel.next;
+        while(p != null) {
+            System.out.print(p.item + " ");
+            p = p.next;
+        }
+        System.out.println();
+    }
+
 
     public static void main(String[] args) {
         SLList list = new SLList();
@@ -83,6 +101,7 @@ public class SLList {
         for (int i = 0; i < 100000; ++i) {
             list.addLast(i);
         }
+        list.print();
 
     }
 }
