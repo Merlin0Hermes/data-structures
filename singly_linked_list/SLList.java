@@ -37,8 +37,7 @@ public class SLList {
     }
 
     public void addFirst(int item) {
-        sentinel.next = new IntNode(item, sentinel.next);
-        ++size;
+        insert(item, 0);
     }
 
     public int size() {
@@ -46,13 +45,7 @@ public class SLList {
     }
 
     public void addLast(int item) {
-
-        IntNode p = sentinel;
-        while(p.next != null) {
-            p = p.next;
-        }
-        p.next = new IntNode(item, null);
-        ++size;
+        insert(item, size);
     }
 
     /** inserts item at a position. inserts at end of list
@@ -75,10 +68,11 @@ public class SLList {
 
         list.insert(10, 0);
         list.insert(20, 1);
-        list.insert(5, 0);
-        list.insert(7, 10);
         list.insert(100, 1000);
-
+        list.addFirst(10);
+        list.addLast(5);
+        list.addLast(0);
+        list.addFirst(402);
 
         System.out.println(list.size());
 
