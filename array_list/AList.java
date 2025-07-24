@@ -1,21 +1,21 @@
 package array_list;
 
-public class AList {
-    private int[] items;
+public class AList<T> {
+    private T[] items;
     private int size;
 
     public AList() {
-        items = new int[1];
+        items = (T[]) new Object[1];
         size = 0;
     }
 
     private void resize(int capacity) {
-        int[] arr = new int[capacity];
+        T[] arr = (T[]) new Object[capacity];
         System.arraycopy(items, 0, arr, 0, size);
         items = arr;
     }
 
-    public void addLast(int item) {
+    public void addLast(T item) {
         double RFACTOR = 0.25;
         if (size == items.length) {
             resize(size + (int) Math.ceil(size * RFACTOR));
@@ -23,11 +23,11 @@ public class AList {
         items[size++] = item;
     }
 
-    public int getLast() {
+    public T getLast() {
         return items[size - 1];
     }
 
-    public int get(int i) {
+    public T get(int i) {
         return items[i];
     }
 
@@ -35,14 +35,14 @@ public class AList {
         return size;
     }
 
-    public int removeLast() {
-        int item = getLast();
+    public T removeLast() {
+        T item = getLast();
         --size;
         return item;
     }
 
     public static void main(String[] args) {
-        AList list = new AList();
+        AList<Integer> list = new AList<>();
         for (int i = 0; i < 100000; ++i) {
             list.addLast(i);
         }
