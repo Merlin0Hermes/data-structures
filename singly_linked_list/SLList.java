@@ -63,6 +63,19 @@ public class SLList {
         ++size;
     }
 
+    private IntNode reverse(IntNode node) {
+        if (node.next == null) {
+            sentinel.next = node;
+            return node;
+        }
+        reverse(node.next).next = node;
+        return node;
+    }
+
+    public void reverse() {
+        reverse(sentinel.next).next = null;
+    }
+
     public static void main(String[] args) {
         SLList list = new SLList();
 
@@ -73,6 +86,9 @@ public class SLList {
         list.addLast(5);
         list.addLast(0);
         list.addFirst(402);
+
+        list.reverse();
+        list.reverse();
 
         System.out.println(list.size());
 
