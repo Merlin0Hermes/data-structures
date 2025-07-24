@@ -73,23 +73,20 @@ public class SLList {
     }
 
     public void reverse() {
-        if (isEmpty()) {
-            return;
-        }
         reverse(sentinel.next).next = null;
     }
 
-    public void reverseIterative() {
-        IntNode node = sentinel.next;
-
-    }
 
     public static void main(String[] args) {
         SLList list = new SLList();
 
-
-
-
+        list.insert(10, 0);
+        list.insert(20, 1);
+        list.insert(100, 1000);
+        list.addFirst(10);
+        list.addLast(5);
+        list.addLast(0);
+        list.addFirst(402);
 
         list.reverse();
         list.reverse();
