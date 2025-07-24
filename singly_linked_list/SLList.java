@@ -55,12 +55,30 @@ public class SLList {
         ++size;
     }
 
+    /** inserts item at a position. inserts at end of list
+     * if position is greater than size.
+     */
+    public void insert(int item, int position) {
+        IntNode p = sentinel;
+        for (int i = 0; i < position; ++i) {
+            if (p.next == null) {
+                break;
+            }
+            p = p.next;
+        }
+        p.next = new IntNode(item, p.next);
+        ++size;
+    }
+
     public static void main(String[] args) {
         SLList list = new SLList();
 
-        list.addLast(10);
-        list.addLast(20);
-        list.addFirst(5);
+        list.insert(10, 0);
+        list.insert(20, 1);
+        list.insert(5, 0);
+        list.insert(7, 10);
+        list.insert(100, 1000);
+
 
         System.out.println(list.size());
 
