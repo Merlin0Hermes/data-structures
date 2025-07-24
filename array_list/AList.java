@@ -42,8 +42,8 @@ public class AList {
 
     public static void main(String[] args) {
         AList list = new AList();
-        list.addLast(1);
-        list.addLast(2);
-        list.addLast(3);
+        for (int i = 0; i < 100000; ++i) {
+            list.addLast(i);
+        }
     }
 }

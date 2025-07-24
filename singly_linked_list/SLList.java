@@ -80,18 +80,9 @@ public class SLList {
     public static void main(String[] args) {
         SLList list = new SLList();
 
-        list.insert(10, 0);
-        list.insert(20, 1);
-        list.insert(100, 1000);
-        list.addFirst(10);
-        list.addLast(5);
-        list.addLast(0);
-        list.addFirst(402);
-
-        list.reverse();
-        list.reverse();
-
-        System.out.println(list.size());
+        for (int i = 0; i < 100000; ++i) {
+            list.addLast(i);
+        }
 
     }
 }
