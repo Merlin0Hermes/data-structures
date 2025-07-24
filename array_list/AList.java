@@ -16,8 +16,9 @@ public class AList {
     }
 
     public void addLast(int item) {
+        double RFACTOR = 0.25;
         if (size == items.length) {
-            resize(size + 1);
+            resize(size + (int) Math.ceil(size * RFACTOR));
         }
         items[size++] = item;
     }
