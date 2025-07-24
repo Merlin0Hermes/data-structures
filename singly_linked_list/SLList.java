@@ -51,6 +51,7 @@ public class SLList {
     public void addLast(int item) {
         last.next = new IntNode(item, null);
         last = last.next;
+        ++size;
     }
 
     /** inserts item at a position. inserts at end of list
