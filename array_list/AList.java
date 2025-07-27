@@ -1,11 +1,11 @@
 package array_list;
 
-public class AList<T> {
+public class AList<T>  {
     private T[] items;
     private int size;
 
     public AList() {
-        items = (T[]) new Object[1];
+        items = (T[]) new Object[8];
         size = 0;
     }
 
@@ -27,6 +27,10 @@ public class AList<T> {
         return items[size - 1];
     }
 
+    public T getFirst() {
+        return items[0];
+    }
+
     public T get(int i) {
         return items[i];
     }
@@ -42,10 +46,21 @@ public class AList<T> {
         return item;
     }
 
+    public void addFirst(T item) {
+        double RFACTOR = 0.25;
+        if (size == items.length) {
+            resize(size + (int) Math.ceil(size * RFACTOR));
+        }
+
+        System.arraycopy(items, 0, items, 1, this.size());
+        items[0] = item;
+        ++size;
+    }
+
     public static void main(String[] args) {
         AList<Integer> list = new AList<>();
         for (int i = 0; i < 100000; ++i) {
-            list.addLast(i);
+            list.addFirst(i);
         }
     }
 }
