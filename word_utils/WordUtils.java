@@ -1,11 +1,12 @@
 package word_utils;
 
+import List.List;
 import deque.LinkedListDeque;
 import array_list.AList;
 
 public class WordUtils {
 
-    public static String longest(LinkedListDeque<String> list) {
+    public static String longest(List<String> list) {
         int maxIndex = 0;
         for (int i = 0; i < list.size(); ++i) {
             String maxString = list.get(maxIndex);
@@ -18,7 +19,7 @@ public class WordUtils {
     }
 
     public static void main(String[] args) {
-        LinkedListDeque<String> list = new LinkedListDeque<>();
+        AList<String> list = new AList<>();
         list.addFirst("What");
         list.addLast("watching");
         list.addFirst("however");
