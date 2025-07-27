@@ -17,6 +17,15 @@ public class WordUtils {
         return list.get(maxIndex);
     }
 
+    public static void main(String[] args) {
+        LinkedListDeque<String> list = new LinkedListDeque<>();
+        list.addFirst("What");
+        list.addLast("watching");
+        list.addFirst("however");
+        list.addLast("whenever");
+        list.addFirst("hieroglyphics");
 
+        System.out.println(WordUtils.longest(list));
+    }
 
 }
