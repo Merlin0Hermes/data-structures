@@ -1,6 +1,6 @@
 package array_list;
 
-public class AList<T>  {
+public class AList<T>  implements List.List<T> {
     private T[] items;
     private int size;
 
