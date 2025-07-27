@@ -1,6 +1,6 @@
 package deque;
 
-public class LinkedListDeque<T> {
+public class LinkedListDeque<T>  {
 
     private static class Node<T> {
         T item;
@@ -97,5 +97,13 @@ public class LinkedListDeque<T> {
             --index;
         }
         return p.item;
+    }
+
+    public T getFirst() {
+        return sentinel.next.item;
+    }
+
+    public T getLast() {
+        return sentinel.prev.item;
     }
 }
