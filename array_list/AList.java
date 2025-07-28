@@ -15,6 +15,7 @@ public class AList<T>  implements List.List<T> {
         items = arr;
     }
 
+    @Override
     public void addLast(T item) {
         double RFACTOR = 0.25;
         if (size == items.length) {
@@ -23,22 +24,27 @@ public class AList<T>  implements List.List<T> {
         items[size++] = item;
     }
 
+    @Override
     public T getLast() {
         return items[size - 1];
     }
 
+    @Override
     public T getFirst() {
         return items[0];
     }
 
+    @Override
     public T get(int i) {
         return items[i];
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public T removeLast() {
         T item = getLast();
         items[size - 1] = null;
@@ -46,6 +52,7 @@ public class AList<T>  implements List.List<T> {
         return item;
     }
 
+    @Override
     public void addFirst(T item) {
         double RFACTOR = 0.25;
         if (size == items.length) {
