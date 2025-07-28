@@ -26,6 +26,7 @@ public class WordUtils {
         list.addLast("whenever");
         list.addFirst("hieroglyphics");
 
+        list.print();
         System.out.println(WordUtils.longest(list));
     }
 

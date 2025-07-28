@@ -11,4 +11,11 @@ public interface List<T> {
     public T removeLast();
     public T get(int i);
     public int size();
+
+    default public void print() {
+        for (int i = 0; i < size(); ++i) {
+            System.out.print(get(i) + " ");
+        }
+        System.out.println();
+    }
 }
