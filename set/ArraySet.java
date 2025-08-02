@@ -70,6 +70,14 @@ public class ArraySet<T> implements Iterable<T> {
         return "{" + String.join(", ", itemsList) + "}";
     }
 
+    public static <T> ArraySet<T> of(T... items) {
+        ArraySet<T> returnSet = new ArraySet<>();
+        for (T i : items) {
+            returnSet.add(i);
+        }
+        return returnSet;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -97,13 +105,11 @@ public class ArraySet<T> implements Iterable<T> {
         s.add("house");
         s.add("fish");
 
-        ArraySet<String> s2 = new ArraySet<>();
-        s2.add("house");
-        s2.add("horse");
-        s2.add("fish");
         System.out.println(s.contains("horse"));
         System.out.println(s.size());
         System.out.println(s);
+
+        ArraySet<String> s2 = ArraySet.of("house", "horse", "fish");
         System.out.println(s.equals(s2));
 
     }
