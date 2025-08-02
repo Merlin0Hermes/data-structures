@@ -68,6 +68,22 @@ public class ArraySet<T> implements Iterable<T> {
         return sb.toString();
     }
 
+    @Override
+    public boolean equals(Object o) {
+       if (o instanceof ArraySet set)  {
+           if (set.size() != this.size()) {
+               return false;
+           }
+            for (T item : this) {
+                if (!set.contains(item)) {
+                    return false;
+                };
+            }
+            return true;
+       }
+       return false;
+    }
+
     public static void main(String[] args) {
         ArraySet<String> s = new ArraySet<>();
         // s.add(null);
@@ -75,15 +91,15 @@ public class ArraySet<T> implements Iterable<T> {
         s.add("fish");
         s.add("house");
         s.add("fish");
+
+        ArraySet<String> s2 = new ArraySet<>();
+        s2.add("house");
+        s2.add("horse");
+        s2.add("fish");
         System.out.println(s.contains("horse"));
         System.out.println(s.size());
-
         System.out.println(s);
-    }
+        System.out.println(s.equals(s2));
 
-    /* Also to do:
-    1. Make ArraySet implement the Iterable<T> interface.
-    2. Implement a toString method.
-    3. Implement an equals() method.
-    */
+    }
 }
