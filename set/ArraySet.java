@@ -13,7 +13,7 @@ public class ArraySet<T> {
      */
     public boolean contains(T x) {
         for (int i = 0; i < size(); ++i) {
-            if (x == items[i]) {
+            if (x.equals(items[i])) {
                 return true;
             }
         }
