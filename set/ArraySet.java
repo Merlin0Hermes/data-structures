@@ -1,5 +1,7 @@
 package set;
 
+import java.util.Iterator;
+
 public class ArraySet<T> {
     private T[] items;
     private int size;
@@ -13,7 +15,7 @@ public class ArraySet<T> {
      */
     public boolean contains(T x) {
         for (int i = 0; i < size(); ++i) {
-            if (x.equals(items[i])) {
+            if ((items[i].equals(x))) {
                 return true;
             }
         }
@@ -23,6 +25,9 @@ public class ArraySet<T> {
     /* Associates the specified value with the specified key in this map.
        Throws an IllegalArgumentException if the key is null. */
     public void add(T x) {
+        if (x == null) {
+            throw new IllegalArgumentException("item can't be null");
+        }
         if (contains(x)) {
             return;
         }
@@ -34,6 +39,25 @@ public class ArraySet<T> {
         return size;
     }
 
+    public Iterator<T> iterator() {
+        return new ArraySetIterator();
+    }
+
+    private class ArraySetIterator implements Iterator<T> {
+        private int pos;
+
+        public ArraySetIterator() {
+            pos = 0;
+        }
+
+        public boolean hasNext() {
+            return pos < size();
+        }
+        public T next() {
+            return items[pos++];
+        }
+    }
+
     public static void main(String[] args) {
         ArraySet<String> s = new ArraySet<>();
         s.add(null);
@@ -43,7 +67,15 @@ public class ArraySet<T> {
         s.add("fish");
         System.out.println(s.contains("horse"));
         System.out.println(s.size());
+
+        Iterator<String> iter = s.iterator();
+        while(iter.hasNext()) {
+            System.out.print(iter.next());
+        }
+        System.out.println();
+
     }
+
 
     /* Also to do:
     1. Make ArraySet implement the Iterable<T> interface.
