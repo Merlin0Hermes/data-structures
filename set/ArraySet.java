@@ -58,6 +58,16 @@ public class ArraySet<T> implements Iterable<T> {
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("{");
+        for (int i = 0; i < size() - 1; ++i) {
+            sb.append(items[i]).append(", ");
+        }
+        sb.append(items[size() - 1]).append("}");
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
         ArraySet<String> s = new ArraySet<>();
         // s.add(null);
@@ -68,13 +78,8 @@ public class ArraySet<T> implements Iterable<T> {
         System.out.println(s.contains("horse"));
         System.out.println(s.size());
 
-        for (String string : s) {
-            System.out.print(string + " ");
-        }
-        System.out.println();
-
+        System.out.println(s);
     }
-
 
     /* Also to do:
     1. Make ArraySet implement the Iterable<T> interface.
