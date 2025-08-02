@@ -2,7 +2,7 @@ package set;
 
 import java.util.Iterator;
 
-public class ArraySet<T> {
+public class ArraySet<T> implements Iterable<T> {
     private T[] items;
     private int size;
 
@@ -60,7 +60,7 @@ public class ArraySet<T> {
 
     public static void main(String[] args) {
         ArraySet<String> s = new ArraySet<>();
-        s.add(null);
+        // s.add(null);
         s.add("horse");
         s.add("fish");
         s.add("house");
@@ -68,9 +68,8 @@ public class ArraySet<T> {
         System.out.println(s.contains("horse"));
         System.out.println(s.size());
 
-        Iterator<String> iter = s.iterator();
-        while(iter.hasNext()) {
-            System.out.print(iter.next());
+        for (String string : s) {
+            System.out.print(string + " ");
         }
         System.out.println();
 
