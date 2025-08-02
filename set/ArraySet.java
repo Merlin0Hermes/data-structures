@@ -1,6 +1,9 @@
 package set;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class ArraySet<T> implements Iterable<T> {
     private T[] items;
@@ -60,12 +63,11 @@ public class ArraySet<T> implements Iterable<T> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("{");
-        for (int i = 0; i < size() - 1; ++i) {
-            sb.append(items[i]).append(", ");
+        List<String> itemsList = new ArrayList<>();
+        for (T item : this) {
+            itemsList.add(item.toString());
         }
-        sb.append(items[size() - 1]).append("}");
-        return sb.toString();
+        return "{" + String.join(", ", itemsList) + "}";
     }
 
     @Override
