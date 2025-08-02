@@ -23,6 +23,9 @@ public class ArraySet<T> {
     /* Associates the specified value with the specified key in this map.
        Throws an IllegalArgumentException if the key is null. */
     public void add(T x) {
+        if (contains(x)) {
+            return;
+        }
         items[size++] = x;
     }
 
