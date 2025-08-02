@@ -1,25 +1,34 @@
 package set;
 
 public class ArraySet<T> {
+    private T[] items;
+    private int size;
 
     public ArraySet() {
+        items = (T[]) new Object[8];
+        size = 0;
     }
 
     /* Returns true if this map contains a mapping for the specified key.
      */
     public boolean contains(T x) {
+        for (int i = 0; i < size(); ++i) {
+            if (x == items[i]) {
+                return true;
+            }
+        }
         return false;
     }
 
     /* Associates the specified value with the specified key in this map.
        Throws an IllegalArgumentException if the key is null. */
     public void add(T x) {
-        return;
+        items[size++] = x;
     }
 
     /* Returns the number of key-value mappings in this map. */
     public int size() {
-        return 0;
+        return size;
     }
 
     public static void main(String[] args) {
