@@ -70,6 +70,9 @@ public class ArraySet<T> implements Iterable<T> {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
        if (o instanceof ArraySet set)  {
            if (set.size() != this.size()) {
                return false;
