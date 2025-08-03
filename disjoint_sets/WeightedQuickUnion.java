@@ -30,12 +30,12 @@ public class WeightedQuickUnion implements DisjointSets {
         }
 
         if (size[proot] < size[qroot]) {
-            size[qroot] += size[proot];
             parent[proot] = qroot;
+            size[qroot] += size[proot];
         }
         else {
-            size[proot] += size[qroot];
             parent[qroot] = proot;
+            size[proot] += size[qroot];
         }
     }
 
