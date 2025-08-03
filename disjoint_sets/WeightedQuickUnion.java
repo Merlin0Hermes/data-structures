@@ -2,16 +2,19 @@ package disjoint_sets;
 
 public class WeightedQuickUnion implements DisjointSets {
     private int[] parent;
+    private int[] size;
 
     public WeightedQuickUnion(int N) {
         parent = new int[N];
+        size = new int[N];
         for (int i = 0; i < N; ++i) {
-            parent[i] = -1;
+            parent[i] = i;
+            size[i] = 1;
         }
     }
 
     public int find(int x) {
-        if (parent[x] < 0) {
+        if (parent[x] == x) {
             return x;
         }
         return find(parent[x]);
@@ -22,15 +25,16 @@ public class WeightedQuickUnion implements DisjointSets {
         int proot = find(p);
         int qroot = find(q);
 
-        int pweight = parent[proot];
-        int qweight = parent[qroot];
+        if (proot == qroot) {
+            return;
+        }
 
-        if (-pweight < -qweight) {
-            parent[qroot] += pweight;
+        if (size[proot] < size[qroot]) {
+            size[qroot] += size[proot];
             parent[proot] = qroot;
         }
         else {
-            parent[proot] += qweight;
+            size[proot] += size[qroot];
             parent[qroot] = proot;
         }
     }
@@ -42,8 +46,9 @@ public class WeightedQuickUnion implements DisjointSets {
 
     public static void main(String[] args) {
         WeightedQuickUnion wq = new WeightedQuickUnion(10);
-        for (int i = 2; i < 10; ++i) {
-            wq.connect(i, 1);
-        }
+        wq.connect(1, 4);
+        wq.connect(2, 3);
+        wq.connect(2, 1);
+        wq.connect(2, 9);
     }
 }
