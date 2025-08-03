@@ -2,13 +2,18 @@ package stack;
 
 import deque.LinkedListDeque;
 
-public class Stack<T> extends LinkedListDeque<T> {
+public class Stack<T>{
+    private LinkedListDeque<T> stack;
+    private int size;
 
-    public void push(T item) {
-        addLast(item);
+    public Stack() {
+        stack = new LinkedListDeque<>();
+        ++size;
     }
-
+    public void push(T item) {
+        stack.addLast(item);
+    }
     public T pop() {
-        return removeLast();
+        return stack.removeLast();
     }
 }
