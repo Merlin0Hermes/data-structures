@@ -46,6 +46,9 @@ public class AList<T>  implements List.List<T> {
 
     @Override
     public T removeLast() {
+	if ((size < items.length / 4) && (size > 4)) {
+            resize(size / 4);
+        }
         T item = getLast();
         items[size - 1] = null;
         --size;
