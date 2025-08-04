@@ -1,7 +1,7 @@
 package disjoint_sets;
 
 public class WeightedQuickUnion implements DisjointSets {
-    private int[] parent;
+    protected int[] parent;
     private int[] size;
 
     public WeightedQuickUnion(int N) {
